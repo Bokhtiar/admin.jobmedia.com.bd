@@ -9,7 +9,7 @@ import { useCallback, useEffect, useState } from "react"
 import { networkErrorHandeller } from "../../utils/helper"
 import { SkeletonForm } from '../../components/loading/skeleton-table';
 
-export const CategoryEdit = () => {
+export const DivisionEdit = () => {
     const { id } = useParams();
     const navigate = useNavigate()
     const [data, setData] = useState()
@@ -25,7 +25,7 @@ export const CategoryEdit = () => {
     /* reosure show */
     const fetchData = useCallback(async () => {
         try {
-            const response = await NetworkServices.Category.show(id)
+            const response = await NetworkServices.Division.show(id)
             if (response.status === 200) {
                 setData(response.data.data)
             }
@@ -41,10 +41,10 @@ export const CategoryEdit = () => {
             const payload = {
                 ...data,
             }
-            const response = await NetworkServices.Category.update(id, payload)
+            const response = await NetworkServices.Division.update(id, payload)
             console.log("res", response);
             if (response.status === 200) {
-                navigate('/dashboard/category')
+                navigate('/dashboard/division')
                 return Toastify.Success(response.data.message);
             }
         } catch (error) {
@@ -60,8 +60,8 @@ export const CategoryEdit = () => {
 
     return <>
         <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
-            <h2 className=" font-semibold text-xl">Category Create</h2>
-            <Link to="/dashboard/category">
+            <h2 className=" font-semibold text-xl">Division Create</h2>
+            <Link to="/dashboard/division">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">
                     list
                 </span>
@@ -72,22 +72,22 @@ export const CategoryEdit = () => {
                 <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
                    
                     <div>
-                        {/* category name */}
+                        {/* division name */}
                         <TextInput
-                            label="Category Name"
+                            label="Division Name"
                             name="name"
                             type="text"
-                            placeholder="Enter category name"
+                            placeholder="Enter division name"
                             control={control}
                             error={errors.name && errors.name.message}
                             defaultvalue={data ? data?.name : "s"}
-                            rules={{ required: "Category name is required" }}
+                            rules={{ required: "Division name is required" }}
                         />
                     </div>
 
                     {/* submit button */}
                     <div className="my-4 flex justify-center">
-                        <PrimaryButton loading={loading} name="Category Update"></PrimaryButton>
+                        <PrimaryButton loading={loading} name="Division Update"></PrimaryButton>
                     </div>
 
                 </form>

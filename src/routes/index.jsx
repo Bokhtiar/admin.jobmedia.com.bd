@@ -11,6 +11,9 @@ import { DashboardLayout } from "../layouts/dashboard.layout"
 import { SkillList } from "../pages/skill"
 import { SkillCreate } from "../pages/skill/create"
 import { SkillEdit } from "../pages/skill/edit"
+import { DivisionList } from "../pages/division"
+import { DivisionCreate } from "../pages/division/create"
+import { DivisionEdit } from "../pages/division/edit"
 
 const appRoutes = [
     {
@@ -29,6 +32,11 @@ const appRoutes = [
             { path: "skill", element:  <SkillList /> },
             { path: "skill/create", element: <SkillCreate/> },
             { path: "skill/edit/:id", element: <SkillEdit /> },
+
+            /** diviision */
+            { path: "division", element: <DivisionList /> },
+            { path: "division/create", element: <DivisionCreate /> },
+            { path: "division/edit/:id", element: <DivisionEdit /> },
         ],
     },
 ]; 
