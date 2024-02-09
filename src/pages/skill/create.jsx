@@ -65,7 +65,7 @@ export const SkillCreate = () => {
 
                 {/* submit button */}
                 <div className="my-4 flex justify-center">
-                    <PrimaryButton loading={loading} name="submit"></PrimaryButton>
+                    <PrimaryButton loading={loading} name="Skill Create"></PrimaryButton>
                 </div>
 
             </form>

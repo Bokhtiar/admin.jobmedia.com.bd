@@ -29,7 +29,7 @@ export const SkillList = () => {
     /* destory */
     const destroy = async(id) => {
         try {
-            const response = await NetworkServices.Category.destroy(id)
+            const response = await NetworkServices.Skill.destroy(id)
             if (response.status === 200) {
                 fetchData()
                 return Toastify.Success(response.data.message) 

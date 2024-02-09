@@ -25,7 +25,7 @@ export const SkillEdit = () => {
     /* reosure show */
     const fetchData = useCallback(async () => {
         try {
-            const response = await NetworkServices.Category.show(id)
+            const response = await NetworkServices.Skill.show(id)
             if (response.status === 200) {
                 setData(response.data.data)
             }
@@ -41,11 +41,11 @@ export const SkillEdit = () => {
             const payload = {
                 ...data,
             }
-            const response = await NetworkServices.Category.update(id, payload)
+            const response = await NetworkServices.Skill.update(id, payload)
             console.log("res", response);
             if (response.status === 200) {
-                navigate('/dashboard/category')
-                return Toastify.Success("Category updated.");
+                navigate('/dashboard/skill')
+                return Toastify.Success(response.data.message);
             }
         } catch (error) {
             setLoading(false)
@@ -60,8 +60,8 @@ export const SkillEdit = () => {
 
     return <>
         <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
-            <h2 className=" font-semibold text-xl">Category Create</h2>
-            <Link to="/dashboard/category">
+            <h2 className=" font-semibold text-xl">Skill Create</h2>
+            <Link to="/dashboard/skill">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">
                     list
                 </span>
@@ -72,22 +72,22 @@ export const SkillEdit = () => {
                 <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
                    
                     <div>
-                        {/* category name */}
+                        {/* skill name */}
                         <TextInput
-                            label="Category Name"
+                            label="Skill Name"
                             name="name"
                             type="text"
-                            placeholder="Enter category name"
+                            placeholder="Enter skill name"
                             control={control}
                             error={errors.name && errors.name.message}
-                            defaultvalue={data ? data?.name : "s"}
-                            rules={{ required: "Category name is required" }}
+                            defaultvalue={data ? data?.name : ""}
+                            rules={{ required: "Skill name is required" }}
                         />
                     </div>
 
                     {/* submit button */}
                     <div className="my-4 flex justify-center">
-                        <PrimaryButton loading={loading} name="submit"></PrimaryButton>
+                        <PrimaryButton loading={loading} name="Skill Update"></PrimaryButton>
                     </div>
 
                 </form>

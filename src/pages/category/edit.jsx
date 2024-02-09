@@ -87,7 +87,7 @@ export const CategoryEdit = () => {
 
                     {/* submit button */}
                     <div className="my-4 flex justify-center">
-                        <PrimaryButton loading={loading} name="submit"></PrimaryButton>
+                        <PrimaryButton loading={loading} name="Category Update"></PrimaryButton>
                     </div>
 
                 </form>
