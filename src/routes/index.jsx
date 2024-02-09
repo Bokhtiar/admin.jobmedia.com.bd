@@ -8,6 +8,9 @@ import { CategoryList } from '../pages/category/index'
 import { ProductCreate } from "../pages/product/create"
 import { CategoryCreate } from "../pages/category/create"
 import { DashboardLayout } from "../layouts/dashboard.layout"
+import { SkillList } from "../pages/skill"
+import { SkillCreate } from "../pages/skill/create"
+import { SkillEdit } from "../pages/skill/edit"
 
 const appRoutes = [
     {
@@ -22,10 +25,10 @@ const appRoutes = [
             { path: "category/create", element: <CategoryCreate /> },
             { path: "category/edit/:id", element: <CategoryEdit /> },
 
-            /** product */
-            { path: "product", element:  <Product /> },
-            { path: "product/create", element: <ProductCreate/> },
-            { path: "product/edit/:id", element: <ProductEdit /> },
+            /** skill */
+            { path: "skill", element:  <SkillList /> },
+            { path: "skill/create", element: <SkillCreate/> },
+            { path: "skill/edit/:id", element: <SkillEdit /> },
         ],
     },
 ]; 
