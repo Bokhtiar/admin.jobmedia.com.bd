@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { NetworkServices } from '../../network';
 import DataTable from 'react-data-table-component';
@@ -31,7 +30,6 @@ export const CategoryList = () => {
     const destroy = async(id) => {
         try {
             const response = await NetworkServices.Category.destroy(id)
-            console.log("res", response);
             if (response.status === 200) {
                 fetchData()
                 return Toastify.Success(response.data.message) 
@@ -48,28 +46,21 @@ export const CategoryList = () => {
     const columns = [
         {
             name: 'Category name',
-            selector: row => row.category_name,
+            selector: row => row.name,
             sortable: true,
         },
-        {
-            name: 'Sub Category',
-            cell: (row) => (
-                row.childs.map((item, i) => {
-                    return <span className='border ml-2 rounded px-2 bg-gray-200' key={i}>{item.category_name}</span>
-                })
-            ),
-        },
+
         {
             name: "Action",
             cell: (row) => (
                 <div className="flex gap-1">
-                    <Link to={`/dashboard/category/edit/${row.category_id}`}>
+                    <Link to={`/dashboard/category/edit/${row._id}`}>
                         <span className="bg-green-500 text-white btn btn-sm material-symbols-outlined">
                             edit
                         </span>
                     </Link>
 
-                    <span onClick={()=> destroy(row.category_id)}>
+                    <span onClick={()=> destroy(row._id)}>
                         <span className="bg-red-500 text-white btn btn-sm material-symbols-outlined">
                             delete
                         </span>

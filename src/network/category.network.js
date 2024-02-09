@@ -5,13 +5,9 @@ export const index = async () => {
     return await privateRequest.get('/admin/category');
 };
 
-/* parent category list */
-export const parentList = async() => {
-    return await privateRequest.get('/admin/category/parent')
-}
-
 /* resource store */
 export const store = async(data) => {
+    console.log("data netwrokd", data);
     return await privateRequest.post('/admin/category', data)
 }
 
