@@ -1,47 +1,15 @@
-import { Link } from 'react-router-dom';
-import { NetworkServices } from '../../network';
-import DataTable from 'react-data-table-component';
-import { Toastify } from '../../components/toastify';
-import { useCallback, useEffect, useState } from 'react';
-import { networkErrorHandeller } from '../../utils/helper';
-import { SkeletonTable } from '../../components/loading/skeleton-table';
-
+import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { NetworkServices } from "../../network";
+import { networkErrorHandeller } from "../../utils/helper";
+import { Toastify } from "../../components/toastify";
+import DataTable from "react-data-table-component";
 
 export const DivisionList = () => {
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
-
-    /* fetch Data */
-    const fetchData = useCallback(async () => {
-        try {
-            setLoading(true)
-            const response = await NetworkServices.Division.index()
-            if (response.status === 200) {
-                setData(response.data.data)
-                setLoading(false)
-            }
-        } catch (error) {
-            setLoading(true)
-            networkErrorHandeller(error)
-        }
-    }, [])
-
-    /* destory */
-    const destroy = async(id) => {
-        try {
-            const response = await NetworkServices.Division.destroy(id)
-            if (response.status === 200) {
-                fetchData()
-                return Toastify.Success(response.data.message) 
-            }
-        } catch (error) {
-            networkErrorHandeller(error)
-        }
-    }
-
-    useEffect(() => {
-        fetchData()
-    }, [fetchData])
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [totalRows, setTotalRows] = useState(0);
+    const [perPage, setPerPage] = useState(10);
 
     const columns = [
         {
@@ -49,7 +17,6 @@ export const DivisionList = () => {
             selector: row => row.name,
             sortable: true,
         },
-
         {
             name: "Action",
             cell: (row) => (
@@ -60,7 +27,7 @@ export const DivisionList = () => {
                         </span>
                     </Link>
 
-                    <span onClick={()=> destroy(row._id)}>
+                    <span onClick={() => destroy(row._id)}>
                         <span className="bg-red-500 text-white btn btn-sm material-symbols-outlined">
                             delete
                         </span>
@@ -70,27 +37,81 @@ export const DivisionList = () => {
         },
     ];
 
-    return <>
-        <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
-            <h2 className=" font-semibold text-xl">Division</h2>
+    /* Fetch data */
+    const fetchData = useCallback(
+        async (page) => {
+            try {
+                setLoading(true);
+                const response = await NetworkServices.Division.index({
+                    page,
+                    limit: perPage,
+                });
+
+                if (response && response.status === 200) {
+                    setData(response?.data?.data);
+                    setTotalRows(response?.data?.paginate?.total_items);
+                }
+                setLoading(false);
+            } catch (error) {
+                if (error) {
+                    setLoading(false);
+                    networkErrorHandeller(error);
+                }
+            }
+        },
+        [perPage]
+    );
+
+    useEffect(() => {
+        fetchData(1);
+    }, []);
+
+    /* handle paginate page change */
+    const handlePageChange = (page) => fetchData(page);
+
+    /* handle paginate row change */
+    const handlePerRowsChange = async (newPerPage, page) => {
+        setLoading(true);
+        const response = await NetworkServices.Division.index({
+            page,
+            limit: newPerPage,
+        });
+        setData(response.data.data);
+        setPerPage(newPerPage);
+        setLoading(false);
+    };
+
+    /* destory */
+    const destroy = async (id) => {
+        try {
+            const response = await NetworkServices.Division.destroy(id)
+            if (response.status === 200) {
+                fetchData()
+                return Toastify.Success(response.data.message)
+            }
+        } catch (error) {
+            networkErrorHandeller(error)
+        }
+    }
+
+    return <section>
+        <div className="flex justify-between shadow-md p-4 px-6 rounded-md">
+            <h2 className=" font-semibold text-xl">Division List</h2>
             <Link to="/dashboard/division/create">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">
                     add
                 </span>
             </Link>
-        </section>
-
-        <section className='my-5'>
-            <div className='shadow-md p-4 px-6 rounded-md'>
-                {loading ? <SkeletonTable /> :
-                    <DataTable
-                        columns={columns}
-                        data={data}
-                        pagination
-                        title="Division List"
-                    />
-                }
-            </div>
-        </section >
-    </>
+        </div>
+        <DataTable
+            columns={columns}
+            data={data}
+            progressPending={loading}
+            pagination
+            paginationServer
+            paginationTotalRows={totalRows}
+            onChangeRowsPerPage={handlePerRowsChange}
+            onChangePage={handlePageChange}
+        />
+    </section>
 }
