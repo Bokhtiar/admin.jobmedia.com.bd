@@ -32,6 +32,8 @@ import { SujbectEdit } from "../pages/subject/edit"
 import { ProfessionEdit } from "../pages/profession/edit"
 import { Professionreate } from "../pages/profession/create"
 import { ProfessionList } from "../pages/profession"
+import { CvRequestList } from "../pages/cv-request"
+import { CvRequestShow } from "../pages/cv-request/show"
 
 const appRoutes = [
     {
@@ -85,6 +87,10 @@ const appRoutes = [
             { path: "profession", element: <ProfessionList /> },
             { path: "profession/create", element: <Professionreate /> },
             { path: "profession/edit/:id", element: <ProfessionEdit /> },
+
+            /** cv request */
+            { path: "cv-request", element: <CvRequestList /> },
+            { path: "cv-request/show/:id", element: <CvRequestShow /> },
         ],
     },
 ]; 

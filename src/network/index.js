@@ -8,7 +8,8 @@ import * as Category from "../network/category.network";
 import * as Division from "../network/division.network";
 import * as Institute from "../network/institute.network";
 import * as Authentication from "../network/auth.network";
-import * as Profession from '../network/profession.network'
+import * as CvRequest from '../network/cv-request.network';
+import * as Profession from '../network/profession.network';
 
 export const NetworkServices = {
     Skill, 
@@ -17,8 +18,9 @@ export const NetworkServices = {
     Product,
     Subject,
     District,
-    Division,
+    Division, 
     Category,
+    CvRequest,
     Institute,
     Profession,
     Authentication,
