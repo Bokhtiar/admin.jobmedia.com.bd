@@ -20,6 +20,9 @@ import { DistrictEdit } from "../pages/district/edit"
 import { UpazilatList } from "../pages/upazila"
 import { UpazilaCreate } from "../pages/upazila/create"
 import { UpazilaEdit } from "../pages/upazila/edit"
+import { DegreeList } from "../pages/degree"
+import { DegreeCreate } from "../pages/degree/create"
+import { DegreeEdit } from "../pages/degree/edit"
 
 const appRoutes = [
     {
@@ -53,6 +56,11 @@ const appRoutes = [
             { path: "upazila", element: <UpazilatList /> },
             { path: "upazila/create", element: <UpazilaCreate /> },
             { path: "upazila/edit/:id", element: <UpazilaEdit /> },
+
+            /** degree */
+            { path: "degree", element: <DegreeList /> },
+            { path: "degree/create", element: <DegreeCreate /> },
+            { path: "degree/edit/:id", element: <DegreeEdit /> },
         ],
     },
 ]; 
