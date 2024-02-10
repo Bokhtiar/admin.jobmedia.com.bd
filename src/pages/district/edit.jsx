@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { TextInput } from '../../components/input';
+import { SearchableSelect, TextInput } from '../../components/input';
 import { Toastify } from "../../components/toastify"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm, Controller } from "react-hook-form"
@@ -9,11 +9,10 @@ import { useCallback, useEffect, useState } from "react"
 import { networkErrorHandeller } from "../../utils/helper"
 import { SkeletonForm } from '../../components/loading/skeleton-table';
 
-export const DivisionEdit = () => {
+export const DistrictEdit = () => {
     const { id } = useParams();
     const navigate = useNavigate()
     const [data, setData] = useState()
-    const [options, setOptions] = useState([]);
     const [loading, setLoading] = useState(false)
 
     const {
@@ -26,7 +25,7 @@ export const DivisionEdit = () => {
     /* reosure show */
     const fetchData = useCallback(async () => {
         try {
-            const response = await NetworkServices.Division.show(id)
+            const response = await NetworkServices.District.show(id)
             if (response.status === 200) {
                 setData(response.data.data)
             }
@@ -34,18 +33,19 @@ export const DivisionEdit = () => {
             networkErrorHandeller(error)
         }
     }, [])
-
+    
     /* submit reosurce */
     const onSubmit = async (data) => {
         try {
             setLoading(true)
             const payload = {
                 ...data,
+                division: data.division.value
             }
-            const response = await NetworkServices.Division.update(id, payload)
-            console.log("res", response);
-            if (response.status === 200) {
-                navigate('/dashboard/division')
+            console.log("payload", payload);
+            const response = await NetworkServices.District.update(id, payload)
+            if (response && response.status === 201) {
+                navigate('/dashboard/district')
                 return Toastify.Success(response.data.message);
             }
         } catch (error) {
@@ -54,27 +54,35 @@ export const DivisionEdit = () => {
         }
     }
 
-    /* district */
-    const fetchDistrict = useCallback(async () => {
+
+    /* Handle search */
+    const handleSearch = async (input) => {
         try {
-            const response = await NetworkServices.District.index()
+            const results = [];
+
+            const response = await NetworkServices.Division.search(input);
             if (response.status === 200) {
-                const options = response.data.data.map(item => ({
-                    "value": item._id,
-                    "label": item.name,
-                }))
-                setOptions(options)
+                const arrLenght = response.data.data.length;
+                if (arrLenght > 0) {
+                    for (let i = 0; i < arrLenght; i++) {
+                        results.push({
+                            value: response.data.data[i]._id,
+                            label: `${response.data.data[i].name}`,
+                        });
+                    }
+                }
             }
-
+            return results;
         } catch (error) {
-            networkErrorHandeller(error)
+            if (error) {
+                networkErrorHandeller(error);
+                return [];
+            }
         }
-    }, [])
-
+    };
 
     useEffect(() => {
         fetchData()
-        fetchDistrict()
     }, [])
 
 
@@ -91,6 +99,27 @@ export const DivisionEdit = () => {
         {data ?
             <section className="shadow-md my-5 p-4 px-6">
                 <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
+
+                    <div className='my-3'>
+                        <SearchableSelect
+                            label="Division"
+                            name="division"
+                            control={control}
+                            error={errors.division && errors.division.message}
+                            isClearable={true}
+                            placeholder="Search division"
+                            rules={{ required: "Division is required" }}
+                            defaultvalue={
+                                data
+                                    ? {
+                                        label: `${data?.division.name}`,
+                                        value: data?.division._id,
+                                    }
+                                    : null
+                            }
+                            onSearch={(inputData) => handleSearch(inputData)}
+                        />
+                    </div>
                    
                     <div>
                         {/* division name */}

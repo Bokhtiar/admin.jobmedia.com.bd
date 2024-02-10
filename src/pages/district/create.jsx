@@ -85,7 +85,7 @@ export const DistrictCreate = () => {
                         control={control}
                         error={errors.division && errors.division.message}
                         isClearable={true}
-                        placeholder="Select division"
+                        placeholder="Search division"
                         rules={{ required: "Division is required" }}
                         // defaultvalue={
                         //     props.data

@@ -13,6 +13,11 @@ export const DistrictList = () => {
 
     const columns = [
         {
+            name: 'Division Name',
+            selector: row => row?.division?.name,
+            sortable: true,
+        },
+        {
             name: 'District Name',
             selector: row => row.name,
             sortable: true,

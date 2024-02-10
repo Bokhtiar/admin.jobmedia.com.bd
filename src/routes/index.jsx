@@ -16,6 +16,7 @@ import { DivisionCreate } from "../pages/division/create"
 import { DivisionEdit } from "../pages/division/edit"
 import { DistrictList } from "../pages/district"
 import { DistrictCreate } from "../pages/district/create"
+import { DistrictEdit } from "../pages/district/edit"
 
 const appRoutes = [
     {
@@ -43,7 +44,7 @@ const appRoutes = [
             /** diviision */
             { path: "district", element: <DistrictList /> },
             { path: "district/create", element: <DistrictCreate /> },
-            { path: "division/edit/:id", element: <DivisionEdit /> },
+            { path: "district/edit/:id", element: <DistrictEdit /> },
         ],
     },
 ]; 
