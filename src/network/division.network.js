@@ -7,6 +7,14 @@ export const index = async (reqParams) => {
     });
 }
 
+/* Search from resources */
+export const search = async (query) => {
+    return await privateRequest.get(
+        `/admin/division?query=${query}`
+    );
+};
+
+
 /* resource store */
 export const store = async(data) => {
     return await privateRequest.post('/admin/division', data)

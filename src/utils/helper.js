@@ -17,7 +17,6 @@ export const removeToken = () => {
 
 /* Global network error handeller */
 export const networkErrorHandeller = (error) => {
-
     if (
         error &&
         error.response &&
@@ -25,7 +24,7 @@ export const networkErrorHandeller = (error) => {
         error.response.data.errors
     ) {
         error.response.data.errors.map((item) => {
-            return Toastify.Error(item[0]);
+            return Toastify.Error(item.message);
         });
     } else {
         return Toastify.Error("Something going wrong, Try again.");

@@ -14,6 +14,8 @@ import { SkillEdit } from "../pages/skill/edit"
 import { DivisionList } from "../pages/division"
 import { DivisionCreate } from "../pages/division/create"
 import { DivisionEdit } from "../pages/division/edit"
+import { DistrictList } from "../pages/district"
+import { DistrictCreate } from "../pages/district/create"
 
 const appRoutes = [
     {
@@ -36,6 +38,11 @@ const appRoutes = [
             /** diviision */
             { path: "division", element: <DivisionList /> },
             { path: "division/create", element: <DivisionCreate /> },
+            { path: "division/edit/:id", element: <DivisionEdit /> },
+
+            /** diviision */
+            { path: "district", element: <DistrictList /> },
+            { path: "district/create", element: <DistrictCreate /> },
             { path: "division/edit/:id", element: <DivisionEdit /> },
         ],
     },
