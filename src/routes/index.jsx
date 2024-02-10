@@ -26,6 +26,9 @@ import { DegreeEdit } from "../pages/degree/edit"
 import { InstituteList } from "../pages/institute"
 import { InstituteCreate } from "../pages/institute/create"
 import { InstituteEdit } from "../pages/institute/edit"
+import { SubjectList } from "../pages/subject"
+import { SubjectCreate } from "../pages/subject/create"
+import { SujbectEdit } from "../pages/subject/edit"
 
 const appRoutes = [
     {
@@ -69,6 +72,11 @@ const appRoutes = [
             { path: "institute", element: <InstituteList /> },
             { path: "institute/create", element: <InstituteCreate /> },
             { path: "institute/edit/:id", element: <InstituteEdit /> },
+
+            /** subject */
+            { path: "subject", element: <SubjectList /> },
+            { path: "subject/create", element: <SubjectCreate /> },
+            { path: "subject/edit/:id", element: <SujbectEdit /> },
         ],
     },
 ]; 

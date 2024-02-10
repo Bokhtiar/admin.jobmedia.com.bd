@@ -1,5 +1,6 @@
 import * as Skill from "../network/skill.network";
 import * as Degree from "../network/degree.network";
+import * as Subject from "../network/subject.network";
 import * as Upazila from "../network/upazila.network"; 
 import * as Product from "../network/product.network";
 import * as District from "../network/district.network";
@@ -13,6 +14,7 @@ export const NetworkServices = {
     Degree,
     Upazila,
     Product,
+    Subject,
     District,
     Division,
     Category,
