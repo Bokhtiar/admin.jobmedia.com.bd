@@ -34,6 +34,7 @@ import { Professionreate } from "../pages/profession/create"
 import { ProfessionList } from "../pages/profession"
 import { CvRequestList } from "../pages/cv-request"
 import { CvRequestShow } from "../pages/cv-request/show"
+import { JobList } from "../pages/job"
 
 const appRoutes = [
     {
@@ -91,6 +92,10 @@ const appRoutes = [
             /** cv request */
             { path: "cv-request", element: <CvRequestList /> },
             { path: "cv-request/show/:id", element: <CvRequestShow /> },
+
+            /** job */
+            { path: "job", element: <JobList /> },
+
         ],
     },
 ]; 

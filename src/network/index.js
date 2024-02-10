@@ -1,3 +1,4 @@
+import * as Job from "../network/job.network";
 import * as Skill from "../network/skill.network";
 import * as Degree from "../network/degree.network";
 import * as Subject from "../network/subject.network";
@@ -12,6 +13,7 @@ import * as CvRequest from '../network/cv-request.network';
 import * as Profession from '../network/profession.network';
 
 export const NetworkServices = {
+    Job,
     Skill, 
     Degree,
     Upazila,

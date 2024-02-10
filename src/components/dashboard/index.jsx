@@ -10,7 +10,7 @@ export const Dashboard = () => {
                             shopping_cart
                         </span>
                         <div className="">
-                            <h3 className=" font-heading text-[14px] text-primary">Cart</h3>
+                            <h3 className=" font-heading text-[14px] text-primary">Job Success</h3>
                             <span className=" font-content text-sm"> 3 items</span>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ export const Dashboard = () => {
                             list_alt
                         </span>
                         <div className="">
-                            <h3 className=" font-heading text-[14px] text-primary">Order</h3>
+                            <h3 className=" font-heading text-[14px] text-primary">Job Peding</h3>
                             <span className=" font-content text-sm"> 3 items</span>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ export const Dashboard = () => {
                             favorite
                         </span>
                         <div className="">
-                            <h3 className=" font-heading text-[14px] text-primary">Wishlist</h3>
+                            <h3 className=" font-heading text-[14px] text-primary">Seeker</h3>
                             <span className=" font-content text-sm"> 3 items</span>
                         </div>
                     </div>
