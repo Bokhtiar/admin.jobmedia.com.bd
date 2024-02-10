@@ -23,6 +23,9 @@ import { UpazilaEdit } from "../pages/upazila/edit"
 import { DegreeList } from "../pages/degree"
 import { DegreeCreate } from "../pages/degree/create"
 import { DegreeEdit } from "../pages/degree/edit"
+import { InstituteList } from "../pages/institute"
+import { InstituteCreate } from "../pages/institute/create"
+import { InstituteEdit } from "../pages/institute/edit"
 
 const appRoutes = [
     {
@@ -61,6 +64,11 @@ const appRoutes = [
             { path: "degree", element: <DegreeList /> },
             { path: "degree/create", element: <DegreeCreate /> },
             { path: "degree/edit/:id", element: <DegreeEdit /> },
+
+            /** insistitute */
+            { path: "institute", element: <InstituteList /> },
+            { path: "institute/create", element: <InstituteCreate /> },
+            { path: "institute/edit/:id", element: <InstituteEdit /> },
         ],
     },
 ]; 
