@@ -17,6 +17,9 @@ import { DivisionEdit } from "../pages/division/edit"
 import { DistrictList } from "../pages/district"
 import { DistrictCreate } from "../pages/district/create"
 import { DistrictEdit } from "../pages/district/edit"
+import { UpazilatList } from "../pages/upazila"
+import { UpazilaCreate } from "../pages/upazila/create"
+import { UpazilaEdit } from "../pages/upazila/edit"
 
 const appRoutes = [
     {
@@ -45,6 +48,11 @@ const appRoutes = [
             { path: "district", element: <DistrictList /> },
             { path: "district/create", element: <DistrictCreate /> },
             { path: "district/edit/:id", element: <DistrictEdit /> },
+
+            /** upazila */
+            { path: "upazila", element: <UpazilatList /> },
+            { path: "upazila/create", element: <UpazilaCreate /> },
+            { path: "upazila/edit/:id", element: <UpazilaEdit /> },
         ],
     },
 ]; 
