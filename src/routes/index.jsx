@@ -29,6 +29,9 @@ import { InstituteEdit } from "../pages/institute/edit"
 import { SubjectList } from "../pages/subject"
 import { SubjectCreate } from "../pages/subject/create"
 import { SujbectEdit } from "../pages/subject/edit"
+import { ProfessionEdit } from "../pages/profession/edit"
+import { Professionreate } from "../pages/profession/create"
+import { ProfessionList } from "../pages/profession"
 
 const appRoutes = [
     {
@@ -77,6 +80,11 @@ const appRoutes = [
             { path: "subject", element: <SubjectList /> },
             { path: "subject/create", element: <SubjectCreate /> },
             { path: "subject/edit/:id", element: <SujbectEdit /> },
+
+            /** profession */
+            { path: "profession", element: <ProfessionList /> },
+            { path: "profession/create", element: <Professionreate /> },
+            { path: "profession/edit/:id", element: <ProfessionEdit /> },
         ],
     },
 ]; 
