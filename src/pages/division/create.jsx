@@ -29,7 +29,7 @@ export const DivisionCreate = () => {
             const response = await NetworkServices.Division.store(payload)
             if (response && response.status === 201) {
                 navigate('/dashboard/division')
-                return Toastify.Success(response.data.message);
+                return Toastify.Success("Division created.");
             }
         } catch (error) {
             setLoading(false)

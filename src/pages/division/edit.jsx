@@ -27,7 +27,7 @@ export const DivisionEdit = () => {
         try {
             const response = await NetworkServices.Division.show(id)
             if (response.status === 200) {
-                setData(response.data.data)
+                setData(response.data)
             }
         } catch (error) {
             networkErrorHandeller(error)
@@ -43,7 +43,7 @@ export const DivisionEdit = () => {
             }
             const response = await NetworkServices.Division.update(id, payload)
             console.log("res", response);
-            if (response.status === 200) {
+            if (response.status === 201) {
                 navigate('/dashboard/division')
                 return Toastify.Success(response.data.message);
             }
