@@ -24,7 +24,7 @@ export const Login = () => {
             const response = await NetworkServices.Authentication.login(data)
             console.log("response", response);
             if (response.status === 200) {
-                setToken(response.data.token);
+                setToken(response.data.access);
                 navigate("/dashboard");
                 setLoading(false)
                 Toastify.Success("Login successfully done")
@@ -50,16 +50,16 @@ export const Login = () => {
                     {/* email */}
                     <div className="my-4">
                         <label className="block">
-                            <label htmlFor="" className="uppercase text-[11px] font-bold">Email <span className=" text-red-500">*</span></label>
+                            <label htmlFor="" className="uppercase text-[11px] font-bold">Phone number <span className=" text-red-500">*</span></label>
                             <input
-                                type="email"
-                                name="email"
-                                {...register("email", {
+                                type="number"
+                                name="phone_number"
+                                {...register("phone_number", {
                                     required: true
                                 })}
                                 className={inputStyle}
-                                placeholder="you@example.com" />
-                            {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
+                                placeholder="018XXXXXXXX" />
+                            {errors.phone_number && <span className="text-red-500 text-sm">This field is required</span>}
                         </label>
                     </div>
                     {/* password */}
