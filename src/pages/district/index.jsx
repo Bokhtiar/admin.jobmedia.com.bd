@@ -26,13 +26,13 @@ export const DistrictList = () => {
             name: "Action",
             cell: (row) => (
                 <div className="flex gap-1">
-                    <Link to={`/dashboard/district/edit/${row._id}`}>
+                    <Link to={`/dashboard/district/edit/${row.id}`}>
                         <span className="bg-green-500 text-white btn btn-sm material-symbols-outlined">
                             edit
                         </span>
                     </Link>
 
-                    <span onClick={() => destroy(row._id)}>
+                    <span onClick={() => destroy(row.id)}>
                         <span className="bg-red-500 text-white btn btn-sm material-symbols-outlined">
                             delete
                         </span>
@@ -47,14 +47,11 @@ export const DistrictList = () => {
         async (page) => {
             try {
                 setLoading(true);
-                const response = await NetworkServices.District.index({
-                    page,
-                    limit: perPage,
-                });
-
+                const response = await NetworkServices.District.index();
+                console.log("district", response.data);
                 if (response && response.status === 200) {
-                    setData(response?.data?.data);
-                    setTotalRows(response?.data?.paginate?.total_items);
+                    setData(response?.data);
+                    //setTotalRows(response?.data?.paginate?.total_items);
                 }
                 setLoading(false);
             } catch (error) {
@@ -67,32 +64,37 @@ export const DistrictList = () => {
         [perPage]
     );
 
+    // daynamic pagination
+    // useEffect(() => {
+    //     fetchData(1);
+    // }, []);
+
     useEffect(() => {
-        fetchData(1);
+        fetchData();
     }, []);
 
     /* handle paginate page change */
-    const handlePageChange = (page) => fetchData(page);
+    // const handlePageChange = (page) => fetchData(page);
 
     /* handle paginate row change */
-    const handlePerRowsChange = async (newPerPage, page) => {
-        setLoading(true);
-        const response = await NetworkServices.District.index({
-            page,
-            limit: newPerPage,
-        });
-        setData(response.data.data);
-        setPerPage(newPerPage);
-        setLoading(false);
-    };
+    // const handlePerRowsChange = async (newPerPage, page) => {
+    //     setLoading(true);
+    //     const response = await NetworkServices.District.index({
+    //         page,
+    //         limit: newPerPage,
+    //     });
+    //     setData(response.data.data);
+    //     setPerPage(newPerPage);
+    //     setLoading(false);
+    // };
 
     /* destory */
     const destroy = async (id) => {
         try {
             const response = await NetworkServices.District.destroy(id)
-            if (response.status === 200) {
+            if (response.status === 204) {
                 fetchData()
-                return Toastify.Success(response.data.message)
+                return Toastify.Info("District deleted.")
             }
         } catch (error) {
             networkErrorHandeller(error)
@@ -113,10 +115,10 @@ export const DistrictList = () => {
             data={data}
             progressPending={loading}
             pagination
-            paginationServer
-            paginationTotalRows={totalRows}
-            onChangeRowsPerPage={handlePerRowsChange}
-            onChangePage={handlePageChange}
+            // paginationServer
+            // paginationTotalRows={totalRows}
+            // onChangeRowsPerPage={handlePerRowsChange}
+            // onChangePage={handlePageChange}
         />
     </section>
 }

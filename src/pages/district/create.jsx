@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { NetworkServices } from '../../network/index'
 import { PrimaryButton } from "../../components/button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { networkErrorHandeller } from "../../utils/helper"
-import { TextInput, SearchableSelect } from '../../components/input';
+import { TextInput, SearchableSelect, SingleSelect } from '../../components/input';
 
 export const DistrictCreate = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
+    const [options, setOptions] = useState([]);
 
     const {
         control,
@@ -27,7 +28,7 @@ export const DistrictCreate = () => {
                 division:data.division.value
             }
             const response = await NetworkServices.District.store(payload)
-            console.log("response", response);
+            console.log("response district", response);
             if (response && response.status === 201) {
                 navigate('/dashboard/district')
                 return Toastify.Success(response.data.message);
@@ -40,22 +41,22 @@ export const DistrictCreate = () => {
     }
 
     /* Handle search */
-    const handleSearch = async (input) => {
+    const handleSearch = async () => {
         try {
             const results = [];
-
-            const response = await NetworkServices.Division.search(input);
+            const response = await NetworkServices.Division.index()
             if (response.status === 200) {
-                const arrLenght = response.data.data.length;
+                const arrLenght = response.data.length;
                 if (arrLenght > 0) {
                     for (let i = 0; i < arrLenght; i++) {
                         results.push({
-                            value: response.data.data[i]._id,
-                            label: `${response.data.data[i].name}`,
+                            value: response.data[i].id,
+                            label: response.data[i].name,
                         });
                     }
                 }
             }
+            setOptions(results)
             return results;
         } catch (error) {
             if (error) {
@@ -64,6 +65,10 @@ export const DistrictCreate = () => {
             }
         }
     };
+
+    useEffect(() => {
+        handleSearch()
+    }, [])
 
     return <>
         <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
@@ -79,23 +84,15 @@ export const DistrictCreate = () => {
             <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
                 {/* division */}
                 <div className='my-3'>
-                    <SearchableSelect
+                    <SingleSelect
                         label="Division"
                         name="division"
                         control={control}
                         error={errors.division && errors.division.message}
+                        options={options}
                         isClearable={true}
-                        placeholder="Search division"
-                        rules={{ required: "Division is required" }}
-                        // defaultvalue={
-                        //     props.data
-                        //         ? {
-                        //             label: `${props.data.division.name} - ${props.data.division.bn_name}`,
-                        //             value: props.data.division._id,
-                        //         }
-                        //         : null
-                        // }
-                        onSearch={(inputData) => handleSearch(inputData)}
+                        placeholder="Select division"
+
                     />
                 </div>
                 {/* Name */}
