@@ -35,6 +35,9 @@ import { ProfessionList } from "../pages/profession"
 import { CvRequestList } from "../pages/cv-request"
 import { CvRequestShow } from "../pages/cv-request/show"
 import { JobList } from "../pages/job"
+import { EducationBoardList } from "../pages/education-board"
+import { EducationBoardCreate } from "../pages/education-board/create"
+import { EducationBoardEdit } from "../pages/education-board/edit"
 
 const appRoutes = [
     {
@@ -68,6 +71,11 @@ const appRoutes = [
             { path: "upazila", element: <UpazilatList /> },
             { path: "upazila/create", element: <UpazilaCreate /> },
             { path: "upazila/edit/:id", element: <UpazilaEdit /> },
+
+            /** education-board */
+            { path: "education-board", element: <EducationBoardList /> },
+            { path: "education-board/create", element: <EducationBoardCreate /> },
+            { path: "education-board/edit/:id", element: <EducationBoardEdit /> },
 
             /** degree */
             { path: "degree", element: <DegreeList /> },

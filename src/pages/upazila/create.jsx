@@ -22,7 +22,6 @@ export const UpazilaCreate = () => {
     /* submit reosurce */
     const onSubmit = async (data) => {
         try {
-            console.log("data", data);
             setLoading(true)
             const payload = {
                 ...data,

@@ -73,6 +73,17 @@ export const DashboardSidebar = () => {
                     </Link>
                 </div>
 
+                <div className="flex  items-center my-2">
+                    <Link to="/dashboard/education-board" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                        <span class="material-symbols-outlined">
+                            school
+                        </span>
+                        <span className=" font-semibold">Education Board</span>
+                    </Link>
+                </div>
+
+                
+
                 {/* <div className="flex  items-center my-2">
                     <Link to="/dashboard/degree" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">

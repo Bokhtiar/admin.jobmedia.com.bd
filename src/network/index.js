@@ -11,6 +11,8 @@ import * as Institute from "../network/institute.network";
 import * as Authentication from "../network/auth.network";
 import * as CvRequest from '../network/cv-request.network';
 import * as Profession from '../network/profession.network';
+import * as EducationBoard from '../network/education.board.network';
+
 
 export const NetworkServices = {
     Job,
@@ -26,4 +28,5 @@ export const NetworkServices = {
     Institute,
     Profession,
     Authentication,
+    EducationBoard,
 };
