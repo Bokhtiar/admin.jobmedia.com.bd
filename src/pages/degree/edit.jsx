@@ -27,7 +27,7 @@ export const DegreeEdit = () => {
         try {
             const response = await NetworkServices.Degree.show(id)
             if (response.status === 200) {
-                setData(response.data.data)
+                setData(response.data)
             }
         } catch (error) {
             networkErrorHandeller(error)
@@ -44,7 +44,7 @@ export const DegreeEdit = () => {
             const response = await NetworkServices.Degree.update(id, payload)
             if (response.status === 200) {
                 navigate('/dashboard/degree')
-                return Toastify.Success(response.data.message);
+                return Toastify.Success("Degree level updated");
             }
         } catch (error) {
             setLoading(false)
@@ -58,7 +58,7 @@ export const DegreeEdit = () => {
 
     return <>
         <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
-            <h2 className=" font-semibold text-xl">Degree Create</h2>
+            <h2 className=" font-semibold text-xl">Degree level name update</h2>
             <Link to="/dashboard/degree">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">
                     list
@@ -72,14 +72,14 @@ export const DegreeEdit = () => {
                     <div>
                         {/* degree name */}
                         <TextInput
-                            label="Degree Name"
-                            name="name"
+                            label="Degree level name"
+                            name="level"
                             type="text"
-                            placeholder="Enter degree name"
+                            placeholder="Enter level name"
                             control={control}
-                            error={errors.name && errors.name.message}
-                            defaultvalue={data ? data?.name : ""}
-                            rules={{ required: "Degree name is required" }}
+                            error={errors.level && errors.level.message}
+                            defaultvalue={data ? data?.level : ""}
+                            rules={{ required: "Degree level name is required" }}
                         />
                     </div>
 

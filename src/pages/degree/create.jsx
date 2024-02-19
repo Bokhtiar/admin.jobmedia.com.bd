@@ -29,7 +29,7 @@ export const DegreeCreate = () => {
             const response = await NetworkServices.Degree.store(payload)
             if (response && response.status === 201) {
                 navigate('/dashboard/degree')
-                return Toastify.Success(response.data.message);
+                return Toastify.Success("Degree level name created.");
             }
         } catch (error) {
             setLoading(false)
@@ -39,7 +39,7 @@ export const DegreeCreate = () => {
 
     return <>
         <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
-            <h2 className=" font-semibold text-xl">Degree Create</h2>
+            <h2 className=" font-semibold text-xl">Degree level name create</h2>
             <Link to="/dashboard/degree">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">
                     list
@@ -50,16 +50,16 @@ export const DegreeCreate = () => {
         <section className="shadow-md my-5 p-4 px-6">
             <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
 
-                {/* degree name */}
+                {/* level name */}
                 <div className="mb-6 lg:mb-2">
                     <TextInput
-                        label="Degree Name"
-                        name="name"
+                        label="Degree level name"
+                        name="level"
                         type="text"
-                        placeholder="Enter degree name"
+                        placeholder="Enter level name"
                         control={control}
-                        error={errors.name && errors.name.message}
-                        rules={{ required: "Degree name is required" }}
+                        error={errors.level && errors.level.message}
+                        rules={{ required: "Degree level name is required" }}
                     />
                 </div>
 
