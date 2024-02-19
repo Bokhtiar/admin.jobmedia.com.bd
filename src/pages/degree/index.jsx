@@ -96,7 +96,7 @@ export const DegreeList = () => {
 
     return <section>
         <div className="flex justify-between shadow-md p-4 px-6 rounded-md">
-            <h2 className=" font-semibold text-xl">Degree List</h2>
+            <h2 className=" font-semibold text-xl">Education degree list</h2>
             <Link to="/dashboard/degree/create">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">
                     add
