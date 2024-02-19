@@ -3,12 +3,13 @@ import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { NetworkServices } from '../../network/index'
 import { PrimaryButton } from "../../components/button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { networkErrorHandeller } from "../../utils/helper"
-import { TextInput, SearchableSelect } from '../../components/input';
+import { TextInput, SearchableSelect, SingleSelect } from '../../components/input';
 
 export const UpazilaCreate = () => {
     const navigate = useNavigate()
+    const [options, setOptions] = useState([]);
     const [loading, setLoading] = useState(false)
 
     const {
@@ -21,6 +22,7 @@ export const UpazilaCreate = () => {
     /* submit reosurce */
     const onSubmit = async (data) => {
         try {
+            console.log("data", data);
             setLoading(true)
             const payload = {
                 ...data,
@@ -29,7 +31,7 @@ export const UpazilaCreate = () => {
             const response = await NetworkServices.Upazila.store(payload)
             if (response && response.status === 201) {
                 navigate('/dashboard/upazila')
-                return Toastify.Success(response.data.message);
+                return Toastify.Success("Upazila created.");
             }
         } catch (error) {
             setLoading(false)
@@ -38,22 +40,22 @@ export const UpazilaCreate = () => {
     }
 
     /* Handle search */
-    const handleSearch = async (input) => {
+    const handleSearch = async () => {
         try {
             const results = [];
-
-            const response = await NetworkServices.District.search(input);
+            const response = await NetworkServices.District.index()
             if (response.status === 200) {
-                const arrLenght = response.data.data.length;
+                const arrLenght = response.data.length;
                 if (arrLenght > 0) {
                     for (let i = 0; i < arrLenght; i++) {
                         results.push({
-                            value: response.data.data[i]._id,
-                            label: `${response.data.data[i].name}`,
+                            value: response.data[i].id,
+                            label: response.data[i].name,
                         });
                     }
                 }
             }
+            setOptions(results)
             return results;
         } catch (error) {
             if (error) {
@@ -62,6 +64,11 @@ export const UpazilaCreate = () => {
             }
         }
     };
+
+    useEffect(() => {
+        handleSearch()
+    }, [])
+
 
     return <>
         <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
@@ -77,15 +84,15 @@ export const UpazilaCreate = () => {
             <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
                 {/* district */}
                 <div className='my-3'>
-                    <SearchableSelect
+                    <SingleSelect
                         label="District"
                         name="district"
                         control={control}
                         error={errors.district && errors.district.message}
+                        options={options}
                         isClearable={true}
-                        placeholder="Search district"
-                        rules={{ required: "District is required" }}
-                        onSearch={(inputData) => handleSearch(inputData)}
+                        placeholder="Select district"
+
                     />
                 </div>
                 {/* Name */}

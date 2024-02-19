@@ -90,7 +90,7 @@ export const DivisionList = () => {
             console.log("response", response);
             if (response.status === 204) {
                 fetchData()
-                return Toastify.Success("Division deleted")
+                return Toastify.Info("Division deleted")
             }
         } catch (error) {
             networkErrorHandeller(error)

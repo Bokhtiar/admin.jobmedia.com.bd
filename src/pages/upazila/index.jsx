@@ -26,13 +26,13 @@ export const UpazilatList = () => {
             name: "Action",
             cell: (row) => (
                 <div className="flex gap-1">
-                    <Link to={`/dashboard/upazila/edit/${row._id}`}>
+                    <Link to={`/dashboard/upazila/edit/${row.id}`}>
                         <span className="bg-green-500 text-white btn btn-sm material-symbols-outlined">
                             edit
                         </span>
                     </Link>
 
-                    <span onClick={() => destroy(row._id)}>
+                    <span onClick={() => destroy(row.id)}>
                         <span className="bg-red-500 text-white btn btn-sm material-symbols-outlined">
                             delete
                         </span>
@@ -47,14 +47,11 @@ export const UpazilatList = () => {
         async (page) => {
             try {
                 setLoading(true);
-                const response = await NetworkServices.Upazila.index({
-                    page,
-                    limit: perPage,
-                });
+                const response = await NetworkServices.Upazila.index();
 
                 if (response && response.status === 200) {
-                    setData(response?.data?.data);
-                    setTotalRows(response?.data?.paginate?.total_items);
+                    setData(response?.data);
+                    //setTotalRows(response?.data?.paginate?.total_items);
                 }
                 setLoading(false);
             } catch (error) {
@@ -66,33 +63,38 @@ export const UpazilatList = () => {
         },
         [perPage]
     );
+    
+
+    // useEffect(() => {
+    //     fetchData(1);
+    // }, []);
 
     useEffect(() => {
-        fetchData(1);
+        fetchData();
     }, []);
 
     /* handle paginate page change */
-    const handlePageChange = (page) => fetchData(page);
+    // const handlePageChange = (page) => fetchData(page);
 
     /* handle paginate row change */
-    const handlePerRowsChange = async (newPerPage, page) => {
-        setLoading(true);
-        const response = await NetworkServices.Upazila.index({
-            page,
-            limit: newPerPage,
-        });
-        setData(response.data.data);
-        setPerPage(newPerPage);
-        setLoading(false);
-    };
+    // const handlePerRowsChange = async (newPerPage, page) => {
+    //     setLoading(true);
+    //     const response = await NetworkServices.Upazila.index({
+    //         page,
+    //         limit: newPerPage,
+    //     });
+    //     setData(response.data.data);
+    //     setPerPage(newPerPage);
+    //     setLoading(false);
+    // };
 
     /* destory */
     const destroy = async (id) => {
         try {
             const response = await NetworkServices.Upazila.destroy(id)
-            if (response.status === 200) {
+            if (response.status === 204) {
                 fetchData()
-                return Toastify.Success(response.data.message)
+                return Toastify.Info("Upazila deleted.")
             }
         } catch (error) {
             networkErrorHandeller(error)
@@ -113,10 +115,10 @@ export const UpazilatList = () => {
             data={data}
             progressPending={loading}
             pagination
-            paginationServer
-            paginationTotalRows={totalRows}
-            onChangeRowsPerPage={handlePerRowsChange}
-            onChangePage={handlePageChange}
+            // paginationServer
+            // paginationTotalRows={totalRows}
+            // onChangeRowsPerPage={handlePerRowsChange}
+            // onChangePage={handlePageChange}
         />
     </section>
 }
