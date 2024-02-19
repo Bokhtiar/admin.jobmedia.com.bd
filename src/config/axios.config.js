@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "../utils/helper";
 
 const apiUrl = "https://jobmedia-t8mk.onrender.com/api/v1";
-
+ 
 /* Publica/Common request config */
 axios.defaults.headers.post["Content-Type"] = "application/json";
 //axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
