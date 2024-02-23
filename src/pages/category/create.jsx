@@ -5,7 +5,7 @@ import { NetworkServices } from '../../network/index'
 import { PrimaryButton } from "../../components/button"
 import { useEffect, useState } from "react"
 import { networkErrorHandeller } from "../../utils/helper"
-import { SingleSelect, TextInput } from '../../components/input';
+import { SingleSelect, TextAreaInput, TextInput } from '../../components/input';
 
 export const CategoryCreate = () => {
     const navigate = useNavigate()
@@ -62,6 +62,18 @@ export const CategoryCreate = () => {
                         error={errors.name && errors.name.message}
                         rules={{ required: "Category Name is required" }}
                     />
+
+                    <TextAreaInput
+                        label="Category description"
+                        name="description"
+                        type="text"
+                        placeholder="Enter category description"
+                        control={control}
+                        error={errors.description && errors.description.message}
+                        rules={{ required: false }}
+                    />
+
+                    
                 </div>
 
                 {/* submit button */}
