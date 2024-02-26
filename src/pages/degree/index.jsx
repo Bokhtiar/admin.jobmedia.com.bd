@@ -21,11 +21,11 @@ export const DegreeList = () => {
             name: "Action",
             cell: (row) => (
                 <div className="flex gap-1">
-                    <Link to={`/dashboard/degree/edit/${row.id}`}>
+                    {/* <Link to={`/dashboard/degree/edit/${row.id}`}>
                         <span className="bg-green-500 text-white btn btn-sm material-symbols-outlined">
                             edit
                         </span>
-                    </Link>
+                    </Link> */}
 
                     <span onClick={() => destroy(row.id)}>
                         <span className="bg-red-500 text-white btn btn-sm material-symbols-outlined">

@@ -14,6 +14,7 @@ export const SubjectList = () => {
     const [perPage, setPerPage] = useState(10);
     const [degree, setDegree] = useState("MASTERS")
     const [options, setOptions] = useState([]);
+    const defaultValue = options[1];
 
     const columns = [
         {
@@ -57,6 +58,7 @@ export const SubjectList = () => {
 
                 if (response && response.status === 200) {
                     setData(response?.data);
+          
                     //setTotalRows(response?.data?.paginate?.total_items);
                 }
                 setLoading(false);
@@ -133,7 +135,10 @@ export const SubjectList = () => {
         </div>
 
         <div className="my-2">
-            <Select placeholder="Select degree" onChange={(e) => degreeSelect(e)} options={options} />
+            {
+                data ? <Select defaultValue={defaultValue} placeholder="Select degree" onChange={(e) => degreeSelect(e)} options={options} /> : "" 
+            }
+            
         </div>
 
         <DataTable

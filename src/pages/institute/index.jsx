@@ -26,11 +26,11 @@ export const InstituteList = () => {
             name: "Action",
             cell: (row) => (
                 <div className="flex gap-1">
-                    <Link to={`/dashboard/institute/edit/${row._id}`}>
+                    {/* <Link to={`/dashboard/institute/edit/${row._id}`}>
                         <span className="bg-green-500 text-white btn btn-sm material-symbols-outlined">
                             edit
                         </span>
-                    </Link>
+                    </Link> */}
 
                     <span onClick={() => destroy(row._id)}>
                         <span className="bg-red-500 text-white btn btn-sm material-symbols-outlined">
