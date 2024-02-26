@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+import { removeToken } from '../../utils/helper'
 
 export const DashboardNavbar = () => {
+    const navigate = useNavigate()
 
+    const logout = () => {
+        removeToken()
+        navigate('/')
+    }
     return <>
         <div className="bg-base-100 sticky top-0 z-50">
             <div className=" bg-white">
@@ -27,28 +33,29 @@ export const DashboardNavbar = () => {
                     </div>
                     {/* responsive navbar end */}
 
-                    <div className="navbar-end mt-1">
+                    <div className="navbar-end mt-1 px-5">
                         <div className="flex items-center gap-4">
 
                          
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="">
-                                    <div className="w-10 rounded-full">
+                                    <div className="w-10 rounded-full flex items-center">
+                                        
                                         <span class="material-symbols-outlined">
                                             account_circle
                                         </span>
-
+                                        <span className='text-sm'>Admin</span>
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li>
+                                    {/* <li>
                                         <Link to="/dashboard" className="justify-between">
                                             Profile
                                             <span className="badge">New</span>
                                         </Link>
                                     </li>
-                                    <li><Link to="/dashboard">Settings</Link></li>
-                                    <li><Link to="/dashboard">Logout</Link></li>
+                                    <li><Link to="/dashboard">Settings</Link></li> */}
+                                    <li onClick={() => logout()}><Link to="/dashboard">Logout</Link></li>
                                 </ul>
                             </div>
 

@@ -82,7 +82,7 @@ export const DashboardSidebar = () => {
                     </Link>
                 </div>
 
-                
+
 
                 <div className="flex  items-center my-2">
                     <Link to="/dashboard/degree" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
@@ -101,15 +101,15 @@ export const DashboardSidebar = () => {
                         <span className=" font-semibold">Institute</span>
                     </Link>
                 </div>
-
+*/}
                 <div className="flex  items-center my-2">
                     <Link to="/dashboard/subject" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
-                        <span class="material-symbols-outlined text-gray-600">
-                            shopping_cart
+                        <span class="material-symbols-outlined">
+                            menu_book
                         </span>
                         <span className=" font-semibold">Sujbect</span>
                     </Link>
-                </div> */}
+                </div>
 
                 {/* <div className="flex  items-center my-2">
                     <Link to="/dashboard/profession" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
@@ -138,7 +138,7 @@ export const DashboardSidebar = () => {
                     </Link>
                 </div> */}
 
-              
+
                 <div className="flex  items-center my-2">
                     <span onClick={() => logout()} className="cursor-pointer w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">

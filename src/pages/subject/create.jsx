@@ -9,7 +9,8 @@ import { SingleSelect, TextInput } from '../../components/input';
 
 export const SubjectCreate = () => {
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false) 
+    const [options, setOptions] = useState([]);
 
     const {
         control,
@@ -25,17 +26,47 @@ export const SubjectCreate = () => {
             const payload = {
                 ...data,
             }
-
-            const response = await NetworkServices.Subject.store(payload)
+            
+            const response = await NetworkServices.Subject.store(data?.degree?.label ,payload)
             if (response && response.status === 201) {
                 navigate('/dashboard/subject')
-                return Toastify.Success(response.data.message);
+                return Toastify.Success("Subject created");
             }
         } catch (error) {
             setLoading(false)
             networkErrorHandeller(error)
         }
     }
+
+    /* Handle search */
+    const handleSearch = async () => {
+        try {
+            const results = [];
+            const response = await NetworkServices.Degree.index()
+            console.log("response", response);
+            if (response.status === 200) {
+                const arrLenght = response.data.length;
+                if (arrLenght > 0) {
+                    for (let i = 0; i < arrLenght; i++) {
+                        results.push({
+                            value: response.data[i].id,
+                            label: response.data[i].level,
+                        });
+                    }
+                }
+            }
+            setOptions(results)
+            return results;
+        } catch (error) {
+            if (error) {
+                networkErrorHandeller(error);
+                return [];
+            }
+        }
+    };
+    useEffect(() => {
+        handleSearch()
+    }, [])
 
     return <>
         <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
@@ -49,6 +80,18 @@ export const SubjectCreate = () => {
 
         <section className="shadow-md my-5 p-4 px-6">
             <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
+
+                <SingleSelect
+                    label="Degree"
+                    name="degree"
+                    control={control}
+                    error={errors.degree && errors.degree.message}
+                    options={options}
+                    isClearable={true}
+                    placeholder="Select degree"
+
+                />
+
                 {/* subject name */}
                 <div className="mb-6 lg:mb-2">
                     <TextInput
