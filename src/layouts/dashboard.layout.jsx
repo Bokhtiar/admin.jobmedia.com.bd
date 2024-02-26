@@ -9,7 +9,7 @@ export const DashboardLayout = () => {
             <section className="">
                 <div className="grid grid-cols-1 md:grid-cols-5 ">
                     <DashboardSidebar />
-                    <div className=" col-span-4 p-5 bg-gray-50 rounded-md">
+                    <div className=" col-span-4 bg-gray-50 p-3 rounded-md">
                         <Outlet />
                     </div>
                 </div>

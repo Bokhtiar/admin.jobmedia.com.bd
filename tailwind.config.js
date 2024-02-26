@@ -20,7 +20,7 @@ module.exports = {
         content: "'Rajdhani', sans-serif"
       },
       colors: {
-        'primary': "#228B22",
+        'primary': "#012970",
       }
     },
   },

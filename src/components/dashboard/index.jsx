@@ -1,68 +1,140 @@
-
+import CanvasJSReact from '@canvasjs/react-charts';
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export const Dashboard = () => {
+
+    // char data
+    const options = {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+            // text: "Growth of Job Media"
+        },
+        axisY: {
+            title: "Capacity (in MWp)",
+            logarithmic: true
+        },
+        data: [{
+            type: "spline",
+            showInLegend: true,
+            legendText: "MWp = one megawatt peak",
+            dataPoints: [
+                { x: new Date(2001, 0), y: 1615 },
+                { x: new Date(2002, 0), y: 2069 },
+                { x: new Date(2003, 0), y: 2635 },
+                { x: new Date(2004, 0), y: 3723 },
+                { x: new Date(2005, 0), y: 5112 },
+                { x: new Date(2006, 0), y: 6660 },
+                { x: new Date(2007, 0), y: 9183 },
+                { x: new Date(2008, 0), y: 15844 },
+                { x: new Date(2009, 0), y: 23185 },
+                { x: new Date(2010, 0), y: 40336 },
+                { x: new Date(2011, 0), y: 70469 },
+                { x: new Date(2012, 0), y: 100504 },
+                { x: new Date(2013, 0), y: 138856 },
+                { x: new Date(2014, 0), y: 178391 },
+                { x: new Date(2015, 0), y: 229300 },
+                { x: new Date(2016, 0), y: 302300 },
+                { x: new Date(2017, 0), y: 405000 }
+            ]
+        }]
+    }
+
     return <>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 md:my-0">
-            {/* cart item start */}
-            <div className="shadow-md py-2 rounded-md">
-                <div className="flex justify-between items-center px-3">
-                    <div className="flex gap-2">
-                        <span class="material-symbols-outlined my-auto border border-primary rounded-md p-2">
-                            shopping_cart
-                        </span>
-                        <div className="">
-                            <h3 className=" font-heading text-[14px] text-primary">Job Success</h3>
-                            <span className=" font-content text-sm"> 3 items</span>
+        <h2 className=" font-bold text-xl text-[#012970] mb-2">Dashboard</h2>
+
+        <div className='grid grid-cols-1 md:grid-cols-4 md: gap-4'>
+            <div className='col-span-3'>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:my-0 ">
+
+
+                    {/* cart item start */}
+                    <div className="shadow-md p-2 rounded-md bg-white">
+                        <h3 className="text-[#012970] font-semibold">New Job | <span className="text-gray-400">Today</span></h3>
+                        <div className="flex items-center gap-3 py-2">
+                            <span class="material-symbols-outlined my-auto border rounded-md p-2">
+                                shopping_cart
+                            </span>
+                            <p className=" leading-4">
+                                <span className="text-primary font-bold text-[18px]">145</span> <br />
+                                <span className="text-gray-400">Total Job</span>
+                            </p>
                         </div>
                     </div>
+                    {/* cart item end */}
 
-                    <span class="material-symbols-outlined">
-                        visibility
-                    </span>
-                </div>
-            </div>
-            {/* cart item end */}
-
-            {/* cart item start */}
-            <div className="shadow-md py-2 rounded-md">
-                <div className="flex justify-between items-center px-3">
-                    <div className="flex gap-2">
-                        <span class="material-symbols-outlined my-auto border border-primary rounded-md p-2">
-                            list_alt
-                        </span>
-                        <div className="">
-                            <h3 className=" font-heading text-[14px] text-primary">Job Peding</h3>
-                            <span className=" font-content text-sm"> 3 items</span>
+                    {/* cart item start */}
+                    <div className="shadow-md p-2 rounded-md bg-white">
+                        <h3 className="text-[#012970] font-semibold">New Job | <span className="text-gray-400">Today</span></h3>
+                        <div className="flex items-center gap-3 py-2">
+                            <span class="material-symbols-outlined my-auto border rounded-md p-2">
+                                shopping_cart
+                            </span>
+                            <p className=" leading-4">
+                                <span className="text-primary font-bold text-[18px]">145</span> <br />
+                                <span className="text-gray-400">Total Job</span>
+                            </p>
                         </div>
                     </div>
+                    {/* cart item end */}
 
-                    <span class="material-symbols-outlined">
-                        visibility
-                    </span>
-                </div>
-            </div>
-            {/* cart item end */}
-
-            {/* cart item start */}
-            <div className="shadow-md py-2 rounded-md">
-                <div className="flex justify-between items-center px-3">
-                    <div className="flex gap-2">
-                        <span class="material-symbols-outlined my-auto border border-primary rounded-md p-2">
-                            favorite
-                        </span>
-                        <div className="">
-                            <h3 className=" font-heading text-[14px] text-primary">Seeker</h3>
-                            <span className=" font-content text-sm"> 3 items</span>
+                    <div className="shadow-md p-2 rounded-md bg-white">
+                        <h3 className="text-[#012970] font-semibold">New Job | <span className="text-gray-400">Today</span></h3>
+                        <div className="flex items-center gap-3 py-2">
+                            <span class="material-symbols-outlined my-auto border rounded-md p-2">
+                                shopping_cart
+                            </span>
+                            <p className=" leading-4">
+                                <span className="text-primary font-bold text-[18px]">145</span> <br />
+                                <span className="text-gray-400">Total Job</span>
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <span class="material-symbols-outlined">
-                        visibility
-                    </span>
+                {/* char */}
+                <div className='my-8'>
+                    <CanvasJSChart options={options}
+                    /* onRef={ref => this.chart = ref} */
+                    />
+                    {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
                 </div>
             </div>
-            {/* cart item end */}
+            <div className='col-span1'>
+                <div className='bg-white p-3'>
+                    <h2 className='text-primary font-bold'>Recent Activity</h2>
+                    <ul>
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-       
+
+
     </>
 }

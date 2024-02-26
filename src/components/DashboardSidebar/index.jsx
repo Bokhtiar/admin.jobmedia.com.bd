@@ -8,7 +8,7 @@ export const DashboardSidebar = () => {
         navigate('/')
     }
     return <>
-        <div className=" col-span-1 h-screen  bg-white  hidden lg:flex">
+        <div className=" col-span-1 h-screen  bg-white  hidden lg:flex pt-3">
             <div className="mx-auto">
                 {/* <div className="flex  items-center my-2 mt-5">
                     <Link to="/dashboard" className="w-48 bg-white px-2 text-black font-content text-left flex items-center rounded-md py-1">
@@ -19,9 +19,9 @@ export const DashboardSidebar = () => {
                     </Link>
                 </div> */}
 
-                <div className="flex  items-center mb-2 ">
-                    <Link to="/dashboard" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
-                        <span class="material-symbols-outlined text-gray-600">
+                <div className="flex  items-center mb-2 bg-[#012970] rounded text-white">
+                    <Link to="/dashboard" className="w-48  px-2  font-content text-left flex gap-1 items-center rounded-md py-1">
+                        <span class="material-symbols-outlined">
                             dashboard
                         </span>
                         <span className=" font-semibold">Dashboard</span>
@@ -29,7 +29,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/category" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/category" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             category
                         </span>
@@ -38,7 +38,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/skill" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/skill" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             skillet
                         </span>
@@ -47,7 +47,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/division" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/division" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             location_on
                         </span>
@@ -56,7 +56,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/district" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/district" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             location_on
                         </span>
@@ -65,7 +65,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/upazila" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/upazila" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             location_on
                         </span>
@@ -74,7 +74,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/education-board" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/education-board" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             school
                         </span>
@@ -85,7 +85,7 @@ export const DashboardSidebar = () => {
                 
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/degree" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/degree" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             license
                         </span>
@@ -94,7 +94,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 {/* <div className="flex  items-center my-2">
-                    <Link to="/dashboard/institute" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/institute" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">
                             shopping_cart
                         </span>
@@ -103,7 +103,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/subject" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/subject" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">
                             shopping_cart
                         </span>
@@ -112,7 +112,7 @@ export const DashboardSidebar = () => {
                 </div> */}
 
                 {/* <div className="flex  items-center my-2">
-                    <Link to="/dashboard/profession" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/profession" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">
                             shopping_cart
                         </span>
@@ -121,7 +121,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/job" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/job" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">
                             shopping_cart
                         </span>
@@ -130,7 +130,7 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/cv-request" className="w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/cv-request" className="w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">
                             shopping_cart
                         </span>
@@ -140,7 +140,7 @@ export const DashboardSidebar = () => {
 
               
                 <div className="flex  items-center my-2">
-                    <span onClick={() => logout()} className="cursor-pointer w-48 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <span onClick={() => logout()} className="cursor-pointer w-48 bg-gray-100 px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined">
                             logout
                         </span>
