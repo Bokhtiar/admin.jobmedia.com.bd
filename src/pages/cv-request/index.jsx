@@ -14,12 +14,17 @@ export const CvRequestList = () => {
     const columns = [
         {
             name: 'Provider Name',
-            selector: row => row?.provider?.name_in_english,
+            selector: row => row?.provider_info?.name_in_english,
             sortable: true,
         },
         {
-            name: 'Trade License',
-            selector: row => row?.provider?.trade_license,
+            name: 'Provider Phone',
+            selector: row => row?.provider?.phone,
+            sortable: true,
+        },
+        {
+            name: 'Provider Email',
+            selector: row => row?.provider?.email,
             sortable: true,
         },
         {
@@ -31,7 +36,7 @@ export const CvRequestList = () => {
             name: "Action",
             cell: (row) => (
                 <div className="flex gap-1">
-                    <Link to={`/dashboard/cv-request/show/${row._id}`}>
+                    <Link to={`/dashboard/cv-request/show/${row.id}`}>
                         <span className="bg-green-500 text-white btn btn-sm material-symbols-outlined">
                             visibility
                         </span>
@@ -46,14 +51,12 @@ export const CvRequestList = () => {
         async (page) => {
             try {
                 setLoading(true);
-                const response = await NetworkServices.CvRequest.index({
-                    page,
-                    limit: perPage,
-                });
+                const response = await NetworkServices.CvRequest.index();
+                console.log("cv re", response?.data?.results);
 
                 if (response && response.status === 200) {
-                    setData(response?.data?.data);
-                    setTotalRows(response?.data?.paginate?.total_items);
+                    setData(response?.data?.results);
+                   // setTotalRows(response?.data?.paginate?.total_items);
                 }
                 setLoading(false);
             } catch (error) {
@@ -67,23 +70,10 @@ export const CvRequestList = () => {
     );
 
     useEffect(() => {
-        fetchData(1);
+        fetchData();
     }, []);
 
-    /* handle paginate page change */
-    const handlePageChange = (page) => fetchData(page);
-
-    /* handle paginate row change */
-    const handlePerRowsChange = async (newPerPage, page) => {
-        setLoading(true);
-        const response = await NetworkServices.CvRequest.index({
-            page,
-            limit: newPerPage,
-        });
-        setData(response.data.data);
-        setPerPage(newPerPage);
-        setLoading(false);
-    };
+   
 
     return <section>
         <div className="flex justify-between shadow-md p-4 px-6 rounded-md">
@@ -94,10 +84,7 @@ export const CvRequestList = () => {
             data={data}
             progressPending={loading}
             pagination
-            paginationServer
-            paginationTotalRows={totalRows}
-            onChangeRowsPerPage={handlePerRowsChange}
-            onChangePage={handlePageChange}
+            
         />
     </section>
 }
