@@ -3,7 +3,7 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export const Dashboard = () => {
 
-    // char data
+    // char data large
     const options = {
         animationEnabled: true,
         theme: "light2",
@@ -36,6 +36,29 @@ export const Dashboard = () => {
                 { x: new Date(2015, 0), y: 229300 },
                 { x: new Date(2016, 0), y: 302300 },
                 { x: new Date(2017, 0), y: 405000 }
+            ]
+        }]
+    }
+
+    // char data circle
+    const options2 = {
+        animationEnabled: true,
+       // exportEnabled: true,
+        theme: "light1",// "light1", "dark1", "dark2"
+        title: {
+            // text: "Trip Expenses"
+        },
+        data: [{
+            type: "pie",
+            indexLabel: "{label}: {y}%",
+            startAngle: -90,
+            dataPoints: [
+                { y: 20, label: "Airfare" },
+                { y: 24, label: "Food & Drinks" },
+                { y: 20, label: "Accomodation" },
+                { y: 14, label: "Transportation" },
+                { y: 12, label: "Activities" },
+                { y: 10, label: "Misc" }
             ]
         }]
     }
@@ -100,36 +123,86 @@ export const Dashboard = () => {
                     {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
                 </div>
             </div>
+            {/* right side */}
             <div className='col-span1'>
-                <div className='bg-white p-3'>
-                    <h2 className='text-primary font-bold'>Recent Activity</h2>
+                {/* recent */}
+                <div className='bg-white p-3 mb-5'>
+                    <h2 className='text-primary font-bold'>Recent Activity  <span className='text-gray-300 font-[400] text-[12px]'>| Today</span></h2>
                     <ul>
                         <li className='flex items-center gap-2 my-1 '>
-                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>32 min</span> 
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
                             <span className='text-[12px]'>Jomuna group posted new job</span>
                         </li>
+                        <hr />
                         <li className='flex items-center gap-2 my-1 '>
-                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>32 min</span>
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
                             <span className='text-[12px]'>Jomuna group posted new job</span>
                         </li>
+                        <hr />
                         <li className='flex items-center gap-2 my-1 '>
-                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>32 min</span>
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+                        <hr />
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span>
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
+                            <span className='text-[12px]'>Jomuna group posted new job</span>
+                        </li>
+                        <hr />
+                        <li className='flex items-center gap-2 my-1 '>
+                            <span className='text-[12px]'>32 min</span>
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
                             <span className='text-[12px]'>Jomuna group posted new job</span>
                         </li>
 
+                        <hr />
                         <li className='flex items-center gap-2 my-1 '>
-                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>32 min</span>
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
                             <span className='text-[12px]'>Jomuna group posted new job</span>
                         </li>
+
+                        <hr />
                         <li className='flex items-center gap-2 my-1 '>
-                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>32 min</span>
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
                             <span className='text-[12px]'>Jomuna group posted new job</span>
                         </li>
+                        <hr />
                         <li className='flex items-center gap-2 my-1 '>
-                            <span className='text-[12px]'>32 min</span> |
+                            <span className='text-[12px]'>32 min</span>
+                            <span class="material-symbols-outlined text-[12px]">
+                                sync
+                            </span>
                             <span className='text-[12px]'>Jomuna group posted new job</span>
                         </li>
                     </ul>
+                </div>
+                {/* chart */}
+                <div className='bg-white px-3'>
+                    <h2 className='text-primary font-bold'>Category Report <span className='text-gray-300 font-[400] text-[12px]'>| This Month</span> </h2>
+                    <CanvasJSChart options={options2}
+                    /* onRef={ref => this.chart = ref} */
+                    />
+                    {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
                 </div>
             </div>
         </div>
