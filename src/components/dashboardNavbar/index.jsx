@@ -4,7 +4,7 @@ export const DashboardNavbar = () => {
 
     return <>
         <div className="bg-base-100 sticky top-0 z-50">
-            <div className=" bg-gray-200">
+            <div className=" bg-white">
                 <div className='navbar  px-10'>
                     {/* responsive navbar start */}
                     <div className="navbar-start ">

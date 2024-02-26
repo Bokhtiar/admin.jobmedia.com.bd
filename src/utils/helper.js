@@ -25,7 +25,7 @@ export const networkErrorHandeller = (error) => {
         error.response.data.errors
     ) {
         error.response.data.errors.map((item) => {
-            return Toastify.Error(item[0]);
+            return <span className="">{Toastify.Error(item[0])}</span>
         });
     } else {
         return Toastify.Error("Something going wrong, Try again.");

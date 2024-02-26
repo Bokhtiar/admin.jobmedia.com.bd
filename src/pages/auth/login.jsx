@@ -80,7 +80,7 @@ export const Login = () => {
                     {/* <Link to={'/registration'}>Create new accounts</Link> */}
                     {/* submit button */}
                     <div className="my-4 flex justify-center">
-                        <PrimaryButton loading={loading} name="submit"></PrimaryButton>
+                        <PrimaryButton loading={loading} name="Sign In"></PrimaryButton>
                     </div>
 
                 </form>
