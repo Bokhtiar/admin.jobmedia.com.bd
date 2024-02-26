@@ -38,7 +38,7 @@ export const CategoryCreate = () => {
     }
 
     return <>
-        <section className="flex justify-between shadow-md p-4 px-6 rounded-md">
+        <section className="flex justify-between shadow-md p-4 px-6 rounded-md bg-white mb-3">
             <h2 className=" font-semibold text-xl">Category Create</h2>
             <Link to="/dashboard/category">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">

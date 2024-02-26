@@ -92,7 +92,7 @@ export const SkillList = () => {
     }
 
     return <section>
-        <div className="flex justify-between shadow-md p-4 px-6 rounded-md">
+        <div className="flex justify-between shadow-md p-4 px-6 rounded-md bg-white mb-3">
             <h2 className=" font-semibold text-xl">Skill List</h2>
             <Link to="/dashboard/skill/create">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">

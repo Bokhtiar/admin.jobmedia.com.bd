@@ -44,7 +44,10 @@ export const DashboardNavbar = () => {
                                         <span class="material-symbols-outlined">
                                             account_circle
                                         </span>
-                                        <span className='text-sm'>Admin</span>
+                                        <span className='text-sm'>admin</span>
+                                        <span class="material-symbols-outlined text-sm">
+                                            expand_more
+                                        </span>
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">

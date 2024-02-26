@@ -73,10 +73,10 @@ export const Dashboard = () => {
 
                     {/* cart item start */}
                     <div className="shadow-md p-2 rounded-md bg-white">
-                        <h3 className="text-[#012970] font-semibold">New Job | <span className="text-gray-400">Today</span></h3>
+                        <h3 className="text-[#012970] font-semibold">Total Job | <span className="text-gray-400">Today</span></h3>
                         <div className="flex items-center gap-3 py-2">
-                            <span class="material-symbols-outlined my-auto border rounded-md p-2">
-                                shopping_cart
+                            <span class="material-symbols-outlined">
+                                work
                             </span>
                             <p className=" leading-4">
                                 <span className="text-primary font-bold text-[18px]">145</span> <br />
@@ -88,28 +88,28 @@ export const Dashboard = () => {
 
                     {/* cart item start */}
                     <div className="shadow-md p-2 rounded-md bg-white">
-                        <h3 className="text-[#012970] font-semibold">New Job | <span className="text-gray-400">Today</span></h3>
+                        <h3 className="text-[#012970] font-semibold">Total Category</h3>
                         <div className="flex items-center gap-3 py-2">
-                            <span class="material-symbols-outlined my-auto border rounded-md p-2">
-                                shopping_cart
+                            <span class="material-symbols-outlined">
+                                category
                             </span>
                             <p className=" leading-4">
-                                <span className="text-primary font-bold text-[18px]">145</span> <br />
-                                <span className="text-gray-400">Total Job</span>
+                                <span className="text-primary font-bold text-[18px]">345</span> <br />
+                                <span className="text-gray-400">Total Category</span>
                             </p>
                         </div>
                     </div>
                     {/* cart item end */}
 
                     <div className="shadow-md p-2 rounded-md bg-white">
-                        <h3 className="text-[#012970] font-semibold">New Job | <span className="text-gray-400">Today</span></h3>
+                        <h3 className="text-[#012970] font-semibold">Total Skill </h3>
                         <div className="flex items-center gap-3 py-2">
-                            <span class="material-symbols-outlined my-auto border rounded-md p-2">
-                                shopping_cart
+                            <span class="material-symbols-outlined">
+                                skillet
                             </span>
                             <p className=" leading-4">
-                                <span className="text-primary font-bold text-[18px]">145</span> <br />
-                                <span className="text-gray-400">Total Job</span>
+                                <span className="text-primary font-bold text-[18px]">45</span> <br />
+                                <span className="text-gray-400">Total Skill</span>
                             </p>
                         </div>
                     </div>
