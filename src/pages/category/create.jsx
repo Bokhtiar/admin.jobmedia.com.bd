@@ -29,7 +29,7 @@ export const CategoryCreate = () => {
             const response = await NetworkServices.Category.store(payload)
             if (response && response.status === 201) {
                 navigate('/dashboard/category')
-                return Toastify.Success(response.data.message);
+                return Toastify.Success("Category Created.");
             }
         } catch (error) {
             setLoading(false)
