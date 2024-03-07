@@ -10,7 +10,8 @@ export const SkillList = () => {
     const [loading, setLoading] = useState(false);
     const [totalRows, setTotalRows] = useState(0);
     const [perPage, setPerPage] = useState(10);
-
+    const [page, setPage] = useState(1)
+    console.log("page", page);
     const columns = [
         {
             name: 'Skill Name',
@@ -21,7 +22,7 @@ export const SkillList = () => {
             name: "Action",
             cell: (row) => (
                 <div className="flex gap-1">
-                    {/* <Link to={`/dashboard/skill/edit/${row.id}`}>
+                    {/* <Link to={`/dashboard/category/edit/${row.id}`}>
                         <span className="bg-green-500 text-white btn btn-sm material-symbols-outlined">
                             edit
                         </span>
@@ -41,12 +42,16 @@ export const SkillList = () => {
     const fetchData = useCallback(
         async (page) => {
             try {
+                setPage(page)
                 setLoading(true);
-                const response = await NetworkServices.Skill.index();
-                console.log("response skll", response);
+                const response = await NetworkServices.Skill.index(
+                    page,
+                    perPage,
+                );
+
                 if (response && response.status === 200) {
                     setData(response?.data?.results);
-                    //setTotalRows(response?.data?.paginate?.total_items);
+                    setTotalRows(response?.data?.count);
                 }
                 setLoading(false);
             } catch (error) {
@@ -60,30 +65,31 @@ export const SkillList = () => {
     );
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        fetchData(page);
+    }, [page]);
 
-    // /* handle paginate page change */
-    // const handlePageChange = (page) => fetchData(page);
+    /* handle paginate page change */
+    const handlePageChange = (page) => fetchData(page);
 
-    // /* handle paginate row change */
-    // const handlePerRowsChange = async (newPerPage, page) => {
-    //     setLoading(true);
-    //     const response = await NetworkServices.Skill.index({
-    //         page,
-    //         limit: newPerPage,
-    //     });
-    //     setData(response.data.data);
-    //     setPerPage(newPerPage);
-    //     setLoading(false);
-    // };
+    /* handle paginate row change */
+    const handlePerRowsChange = async (newPerPage, page) => {
+        setPage(page)
+        setLoading(true);
+        const response = await NetworkServices.Skill.index(
+            page,
+            newPerPage,
+        );
+        setData(response.data.results);
+        setPerPage(newPerPage);
+        setLoading(false);
+    };
 
     /* destory */
     const destroy = async (id) => {
         try {
             const response = await NetworkServices.Skill.destroy(id)
             if (response.status === 204) {
-                fetchData()
+                fetchData(page)
                 return Toastify.Info("Skill Deleted")
             }
         } catch (error) {
@@ -92,7 +98,7 @@ export const SkillList = () => {
     }
 
     return <section>
-        <div className="flex justify-between shadow-md p-4 px-6 rounded-md bg-white mb-3">
+        <div className="flex justify-between shadow-md p-4 px-6 rounded-md">
             <h2 className=" font-semibold text-xl">Skill List</h2>
             <Link to="/dashboard/skill/create">
                 <span class="border border-green-500 rounded-full material-symbols-outlined p-1">
@@ -105,10 +111,10 @@ export const SkillList = () => {
             data={data}
             progressPending={loading}
             pagination
-            // paginationServer
-            // paginationTotalRows={totalRows}
-            // onChangeRowsPerPage={handlePerRowsChange}
-            // onChangePage={handlePageChange}
+            paginationServer
+            paginationTotalRows={totalRows}
+            onChangeRowsPerPage={handlePerRowsChange}
+            onChangePage={handlePageChange}
         />
     </section>
 }

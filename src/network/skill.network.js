@@ -1,8 +1,8 @@
 import { privateRequest } from '../config/axios.config'
 
 /* list of resource */
-export const index = async (reqParams) => {
-    return await privateRequest.get(`/admin/skill/`);
+export const index = async (page, perPage) => {
+    return await privateRequest.get(`/admin/skill?page=${page}&page_size=${perPage}`);
 };
 
 /* resource store */

@@ -63,20 +63,21 @@ export const CategoryList = () => {
         fetchData();
     }, []);
 
-    // /* handle paginate page change */
-    // const handlePageChange = (page) => fetchData(page);
+    /* handle paginate page change */
+    const handlePageChange = (page) => fetchData(page);
 
-    // /* handle paginate row change */
-    // const handlePerRowsChange = async (newPerPage, page) => {
-    //     setLoading(true);
-    //     const response = await NetworkServices.Category.index({
-    //         page,
-    //         limit: newPerPage,
-    //     });
-    //     setData(response.data.data);
-    //     setPerPage(newPerPage);
-    //     setLoading(false);
-    // };
+    /* handle paginate row change */
+    const handlePerRowsChange = async (newPerPage, page) => {
+        setLoading(true);
+        const response = await NetworkServices.Skill.index({
+            page,
+            perPage,
+        });
+
+        setData(response.data.results);
+        setPerPage(newPerPage);
+        setLoading(false);
+    };
 
     /* destory */
     const destroy = async (id) => {
