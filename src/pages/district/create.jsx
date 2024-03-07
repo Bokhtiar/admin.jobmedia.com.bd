@@ -27,6 +27,7 @@ export const DistrictCreate = () => {
                 ...data,
                 division:data.division.value
             }
+            console.log("pyaload", payload);
             const response = await NetworkServices.District.store(payload)
             console.log("response district", response);
             if (response && response.status === 201) {
@@ -35,7 +36,7 @@ export const DistrictCreate = () => {
             }
         } catch (error) {
             setLoading(false)
-            console.log("error", error);
+            console.log("error distrcit", error);
             networkErrorHandeller(error)
         }
     }

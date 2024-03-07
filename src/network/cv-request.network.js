@@ -12,5 +12,5 @@ export const show = async(id) => {
 
 /* resource show */
 export const PaymentStatusUpdate = async (id) => {
-    return await privateRequest.put(`/admin/provider-cv-request-update/${id}`)
+    return await privateRequest.put(`/admin/provider-cv-request-update/${id}/`)
 }

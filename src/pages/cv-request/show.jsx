@@ -24,10 +24,16 @@ export const CvRequestShow = () => {
 
     /** payment status */
     const paymentStatus =  async(id) => {
-        const response = await NetworkServices.CvRequest.PaymentStatusUpdate(id)
-        if (response.status === 200) {
-            fetchData()
-            Toastify.Success("Payment Status Updated")
+        console.log("id", id);
+        try {
+            const response = await NetworkServices.CvRequest.PaymentStatusUpdate(id)
+            console.log("response cv ", response);
+            if (response.status === 200) {
+                fetchData()
+                Toastify.Success("Payment Status Updated")
+            }   
+        } catch (error) {
+           networkErrorHandeller(error)
         }
     }
 
@@ -37,13 +43,13 @@ export const CvRequestShow = () => {
   
     return <>
 
-        {/* <div className=" mb-9">
+        <div className=" mb-9">
             <h3 className="text-2xl pb-3 font-bold">Payment Status</h3>
             {
                 data?.payment_status === true ? <input type="checkbox" className="toggle" checked /> : <input type="checkbox" className="toggle" onClick={() => paymentStatus(id)} />
             }
 
-        </div> */}
+        </div>
 
         <div className=" border p-7 rounded">
             {/* <h3 className="text-2xl pb-3 font-bold">Provider Information</h3> */}
@@ -70,7 +76,7 @@ export const CvRequestShow = () => {
                         data?.map((seeker, i) => {
                             return <>
                                 <div className="p-4 border">
-
+ 
                                     <div className="flex justify-between">
                                         <div className="flex text-gray-500">
                                             <img className=" h-16 w-16 rounded-md" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBcmeKw3zX-4JGyMj73dHZ2si1luYlfS047bqvFp-UFWWsIKysc99IYdYE5R9aC2yfvjU&usqp=CAU" alt="" />

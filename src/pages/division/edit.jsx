@@ -42,8 +42,8 @@ export const DivisionEdit = () => {
                 ...data,
             }
             const response = await NetworkServices.Division.update(id, payload)
-            console.log("res", response);
-            if (response.status === 201) {
+            console.log("res update division", response);
+            if (response.status === 200) {
                 navigate('/dashboard/division')
                 return Toastify.Success(response.data.message);
             }
